@@ -49,7 +49,7 @@ func main() {
 	mux.HandleFunc("/subscriptions", subscriptions.NewSubscriptionsHandler(log, storage))
 	mux.HandleFunc("/subscriptions/", subscriptions.NewSubscriptionByIDHandler(log, storage))
 	mux.HandleFunc("/subscriptions/sum", sum.NewSumHandler(log, storage))
-	mux.Handle("/swagger", httpSwagger.WrapHandler)
+	mux.Handle("/swagger/", httpSwagger.WrapHandler)
 
 	var handler http.Handler = mux
 	handler = middleware.NewLoggingMiddleware(handler, log)
